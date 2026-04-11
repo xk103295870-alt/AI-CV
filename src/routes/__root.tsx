@@ -35,11 +35,11 @@ type RouterContext = {
   flags: FeatureFlags;
 };
 
-const appName = "Reactive Resume";
-const tagline = "A free and open-source resume builder";
+const appName = "W简历";
+const tagline = "专业简历制作工具";
 const title = `${appName} — ${tagline}`;
 const description =
-  "Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.";
+  "W简历是一款专业的在线简历制作工具，帮助您快速创建、更新和分享您的简历。";
 
 await loadLocale(await getLocale());
 

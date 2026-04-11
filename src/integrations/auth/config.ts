@@ -225,7 +225,7 @@ const getAuthConfig = () => {
   }
 
   return betterAuth({
-    appName: "Reactive Resume",
+    appName: "W简历",
     baseURL: authBaseUrl,
     secret: process.env.BETTER_AUTH_SECRET ?? env.AUTH_SECRET,
 
@@ -250,8 +250,8 @@ const getAuthConfig = () => {
       sendResetPassword: async ({ user, url }) => {
         await sendEmail({
           to: user.email,
-          subject: "Reset your password",
-          text: `You requested a password reset for your Reactive Resume account.\n\nTo reset your password, please visit the following URL:\n${url}.\n\nIf you did not request a password reset, please ignore this email.`,
+          subject: "重置您的密码",
+          text: `您申请了重置 W简历 账户的密码。\n\n请点击以下链接重置密码：\n${url}\n\n如果您没有申请重置密码，请忽略此邮件。`,
         });
       },
       password: {
@@ -266,8 +266,8 @@ const getAuthConfig = () => {
       sendVerificationEmail: async ({ user, url }) => {
         await sendEmail({
           to: user.email,
-          subject: "Verify your email",
-          text: `You recently signed up for an account on Reactive Resume.\n\nTo verify your email, please visit the following URL:\n${url}`,
+          subject: "验证您的邮箱",
+          text: `感谢您注册 W简历。\n\n请点击以下链接验证您的邮箱：\n${url}`,
         });
       },
     },
@@ -278,8 +278,8 @@ const getAuthConfig = () => {
         sendChangeEmailConfirmation: async ({ user, newEmail, url }) => {
           await sendEmail({
             to: newEmail,
-            subject: "Verify your new email",
-            text: `You recently requested to change your email on Reactive Resume from ${user.email} to ${newEmail}.\n\nTo verify this change, please visit the following URL:\n${url}\n\nIf you did not request this change, please ignore this email.`,
+            subject: "验证您的新邮箱",
+            text: `您申请将 W简历 账户的邮箱从 ${user.email} 修改为 ${newEmail}。\n\n请点击以下链接确认修改：\n${url}\n\n如果您没有申请修改，请忽略此邮件。`,
           });
         },
       },
@@ -342,7 +342,7 @@ const getAuthConfig = () => {
       admin(),
       openAPI(),
       genericOAuth({ config: authConfigs }),
-      twoFactor({ issuer: "Reactive Resume" }),
+      twoFactor({ issuer: "W简历" }),
       apiKey({ enableSessionForAPIKeys: true, rateLimit: { enabled: false } }),
       dash({ apiKey: env.BETTER_AUTH_API_KEY, activityTracking: { enabled: true } }),
       oauthProvider({
