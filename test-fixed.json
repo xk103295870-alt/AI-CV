@@ -1,0 +1,189 @@
+{
+  "id": "cm9example123456789",
+  "name": "李思远-全栈开发",
+  "slug": "li-siyuan-resume",
+  "basics": {
+    "name": "李思远",
+    "headline": "全栈开发工程师",
+    "email": "li.siyuan@example.com",
+    "phone": "+86 139-8888-5678",
+    "location": "上海市浦东新区",
+    "url": {
+      "href": "https://lisyuan.dev",
+      "label": "博客"
+    },
+    "picture": {
+      "url": "",
+      "size": 64,
+      "aspectRatio": 1,
+      "borderRadius": 0,
+      "effects": {
+        "hidden": false,
+        "border": false,
+        "grayscale": false
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "summary",
+      "name": "个人简介",
+      "content": "<p>6年全栈开发经验，精通 Python、Go、React，技术视野开阔，擅长从零构建高并发后端系统与响应式前端应用。曾在创业公司快速成长，也在中大型企业主导过核心架构改造。</p>",
+      "visible": true
+    },
+    {
+      "id": "experience",
+      "name": "工作经历",
+      "items": [
+        {
+          "id": "exp1",
+          "company": "美团",
+          "position": "后端开发工程师",
+          "location": "上海市长宁区",
+          "date": "2021年8月 - 至今",
+          "summary": "<ul><li>参与点评业务交易系统开发，日订单量超 500 万</li><li>基于 Go 重构支付模块，接口响应时间降低 60%</li><li>设计并实现优惠券核销系统，支持高并发场景</li></ul>",
+          "url": { "href": "", "label": "" }
+        },
+        {
+          "id": "exp2",
+          "company": "拼多多",
+          "position": "全栈开发工程师",
+          "location": "上海市徐汇区",
+          "date": "2019年3月 - 2021年7月",
+          "summary": "<ul><li>负责商家后台管理系统前端重构，React + TypeScript 升级</li><li>开发数据分析平台，使用 ECharts 实现 20+ 可视化图表</li><li>搭建自动化测试框架，覆盖率从 30% 提升至 75%</li></ul>",
+          "url": { "href": "", "label": "" }
+        },
+        {
+          "id": "exp3",
+          "company": "创业公司（已并购）",
+          "position": "Python 开发",
+          "location": "北京市海淀区",
+          "date": "2017年7月 - 2019年2月",
+          "summary": "<ul><li>独立完成爬虫系统，支持全网商品数据采集</li><li>开发微信小程序后端，使用 Django + MySQL</li></ul>",
+          "url": { "href": "", "label": "" }
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "education",
+      "name": "教育背景",
+      "items": [
+        {
+          "id": "edu1",
+          "institution": "上海交通大学",
+          "area": "软件工程",
+          "studyType": "本科",
+          "score": "GPA 3.5/4.0",
+          "location": "上海市闵行区",
+          "date": "2013年9月 - 2017年6月"
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "skills",
+      "name": "技能",
+      "items": [
+        {
+          "id": "skill1",
+          "name": "后端开发",
+          "level": "5",
+          "keywords": ["Go", "Python", "Django", "FastAPI", "MySQL", "Redis"]
+        },
+        {
+          "id": "skill2",
+          "name": "前端开发",
+          "level": "4",
+          "keywords": ["React", "Vue", "TypeScript", "CSS3", "Webpack"]
+        },
+        {
+          "id": "skill3",
+          "name": "DevOps",
+          "level": "3",
+          "keywords": ["Docker", "Kubernetes", "Linux", "CI/CD", "Nginx"]
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "projects",
+      "name": "项目经验",
+      "items": [
+        {
+          "id": "proj1",
+          "name": "高并发爬虫框架",
+          "date": "2020年",
+          "summary": "<p>基于 Go 的分布式爬虫框架，支持代理池、异步调度，已开源并获得 500+ GitHub Stars。</p>",
+          "url": { "href": "", "label": "" }
+        },
+        {
+          "id": "proj2",
+          "name": "开源组件库",
+          "date": "2022年",
+          "summary": "<p>React Hooks 工具库，包含 30+ 常用 Hooks，用于公司内部多个项目。</p>",
+          "url": { "href": "https://github.com/lisiyuan/ui", "label": "GitHub" }
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "certifications",
+      "name": "证书",
+      "items": [
+        {
+          "id": "cert1",
+          "name": "CKA",
+          "issuer": "CNCF",
+          "date": "2023年6月"
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": "languages",
+      "name": "语言",
+      "items": [
+        {
+          "id": "lang1",
+          "name": "中文",
+          "fluency": "母语",
+          "level": "5"
+        },
+        {
+          "id": "lang2",
+          "name": "英语",
+          "fluency": "流利",
+          "level": "4"
+        }
+      ],
+      "visible": true
+    }
+  ],
+  "metadata": {
+    "template": "azurill",
+    "locale": "zh-CN",
+    "page": {
+      "format": "a4",
+      "margin": {
+        "top": 40,
+        "right": 40,
+        "bottom": 40,
+        "left": 40
+      }
+    },
+    "theme": {
+      "background": "#ffffff",
+      "text": "#000000",
+      "primary": "#10b981"
+    },
+    "typography": {
+      "family": {
+        "heading": "IBM Plex Sans",
+        "body": "IBM Plex Sans"
+      }
+    }
+  },
+  "createdAt": "2025-01-01T00:00:00.000Z",
+  "updatedAt": "2025-01-01T00:00:00.000Z"
+}

@@ -51,7 +51,7 @@ const appSidebarItems = [
   },
   {
     icon: <BriefcaseIcon />,
-    label: msg`Job Search`,
+    label: msg`Job Search (Coming Soon)`,
     href: "/dashboard/job-search",
   },
 ] as const satisfies SidebarItem[];
@@ -84,7 +84,7 @@ const settingsSidebarItems = [
   },
   {
     icon: <BriefcaseIcon />,
-    label: msg`Job Search API`,
+    label: msg`Job Search API (Coming Soon)`,
     href: "/dashboard/settings/job-search",
   },
   {
