@@ -3294,3 +3294,11 @@ msgstr "Zoom out"
 #: src/utils/locale.ts
 msgid "Zulu"
 msgstr "Zulu"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job Search (Coming Soon)"
+msgstr "Job Search (Coming Soon)"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job Search API (Coming Soon)"
+msgstr "Job Search API (Coming Soon)"

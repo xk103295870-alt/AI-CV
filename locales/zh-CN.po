@@ -3299,3 +3299,11 @@ msgstr "缩小"
 #: src/utils/locale.ts
 msgid "Zulu"
 msgstr "祖鲁语"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job Search (Coming Soon)"
+msgstr "工作搜索（即将推出）"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job Search API (Coming Soon)"
+msgstr "工作搜索 API（即将推出）"

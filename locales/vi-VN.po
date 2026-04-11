@@ -3299,3 +3299,11 @@ msgstr "Thu nhỏ"
 #: src/utils/locale.ts
 msgid "Zulu"
 msgstr "Zulu"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job Search (Coming Soon)"
+msgstr "Tìm kiếm việc làm (Sắp ra mắt)"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job Search API (Coming Soon)"
+msgstr "API Tìm kiếm việc làm (Sắp ra mắt)"
