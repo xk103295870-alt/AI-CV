@@ -44,6 +44,8 @@ services:
   seaweedfs:
     image: chrislusf/seaweedfs:latest
     restart: unless-stopped
+    ports:
+      - "8333:8333"
     command: server -s3 -filer -dir=/data -ip=0.0.0.0
     environment:
       - AWS_ACCESS_KEY_ID=seaweedfs
