@@ -72,11 +72,7 @@ const settingsSidebarItems = [
     label: msg`Authentication`,
     href: "/dashboard/settings/authentication",
   },
-  {
-    icon: <KeyIcon />,
-    label: msg`API Keys`,
-    href: "/dashboard/settings/api-keys",
-  },
+
   {
     icon: <BrainIcon />,
     label: msg`Artificial Intelligence`,
