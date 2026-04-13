@@ -1,7 +1,7 @@
 import { desc, sql, gte } from "drizzle-orm";
 
 import { db } from "../../drizzle/client";
-import { schema } from "../../drizzle/schema";
+import * as schema from "../../drizzle/schema";
 import { generateId } from "@/utils/string";
 
 export type UserListItem = {

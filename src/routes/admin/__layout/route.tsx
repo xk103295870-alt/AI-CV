@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, redirect, useRouter } from "@tanstack/react-router";
-import { ShieldIcon, UsersIcon, LayoutDashboardIcon, SettingsIcon, SignOutIcon } from "@phosphor-icons/react";
+import { UsersIcon, LayoutDashboardIcon, SettingsIcon, SignOutIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarRail, SidebarFooter } from "@/components/ui/sidebar";
@@ -17,7 +17,6 @@ const adminNavItems = [
 export const Route = createFileRoute("/admin/__layout")({
   component: AdminLayout,
   beforeLoad: async ({ context }) => {
-    // 检查是否是管理员
     if (!context.session?.user?.role || context.session.user.role !== "admin") {
       throw redirect({ to: "/admin/login", replace: true });
     }
@@ -36,7 +35,6 @@ function AdminLayout() {
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="flex min-h-screen w-full">
-        {/* Admin Sidebar */}
         <Sidebar variant="inset" collapsible="icon">
           <SidebarHeader>
             <SidebarMenu>
@@ -56,12 +54,14 @@ function AdminLayout() {
                 <SidebarMenu>
                   {adminNavItems.map((item) => (
                     <SidebarMenuItem key={item.href}>
-                      <SidebarMenuButton asChild>
-                        <Link to={item.href} activeProps={{ className: "bg-sidebar-accent" }}>
-                          <item.icon className="size-4" />
-                          <span>{item.label}</span>
-                        </Link>
-                      </SidebarMenuButton>
+                      <SidebarMenuButton
+                        render={
+                          <Link to={item.href} activeProps={{ className: "bg-sidebar-accent" }}>
+                            <item.icon className="size-4" />
+                            <span>{item.label}</span>
+                          </Link>
+                        }
+                      />
                     </SidebarMenuItem>
                   ))}
                 </SidebarMenu>
@@ -69,21 +69,20 @@ function AdminLayout() {
             </SidebarGroup>
           </SidebarContent>
 
-          <SidebarFooter>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton onClick={handleLogout} className="text-destructive hover:text-destructive">
-                  <SignOutIcon className="size-4" />
-                  <span>退出登录</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
+          <SidebarFooter className="p-4">
+            <Button 
+              variant="ghost" 
+              className="w-full justify-start gap-2 text-destructive hover:text-destructive hover:bg-destructive/10"
+              onClick={handleLogout}
+            >
+              <SignOutIcon className="size-4" />
+              <span>退出登录</span>
+            </Button>
           </SidebarFooter>
 
           <SidebarRail />
         </Sidebar>
 
-        {/* Main Content */}
         <main className="flex-1 overflow-auto bg-muted/20 p-6">
           <Outlet />
         </main>
