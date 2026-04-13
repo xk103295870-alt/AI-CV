@@ -27,11 +27,13 @@ import { Route as AuthOauthRouteImport } from "./routes/auth/oauth";
 import { Route as AuthLoginRouteImport } from "./routes/auth/login";
 import { Route as AuthForgotPasswordRouteImport } from "./routes/auth/forgot-password";
 import { Route as ApiHealthRouteImport } from "./routes/api/health";
+import { Route as AdminLoginRouteImport } from "./routes/admin/login";
 import { Route as DotwellKnownOpenidConfigurationRouteImport } from "./routes/[.]well-known/openid-configuration";
 import { Route as DotwellKnownOauthProtectedResourceRouteImport } from "./routes/[.]well-known/oauth-protected-resource";
 import { Route as DotwellKnownOauthAuthorizationServerRouteImport } from "./routes/[.]well-known/oauth-authorization-server";
 import { Route as UsernameSlugRouteImport } from "./routes/$username/$slug";
 import { Route as BuilderResumeIdRouteRouteImport } from "./routes/builder/$resumeId/route";
+import { Route as Admin_layoutRouteRouteImport } from "./routes/admin/__layout/route";
 import { Route as DashboardResumesIndexRouteImport } from "./routes/dashboard/resumes/index";
 import { Route as DashboardJobSearchIndexRouteImport } from "./routes/dashboard/job-search/index";
 import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resumeId/index";
@@ -49,7 +51,8 @@ import { Route as DotwellKnownOauthProtectedResourceSplatRouteImport } from "./r
 import { Route as DotwellKnownOauthAuthorizationServerSplatRouteImport } from "./routes/[.]well-known/oauth-authorization-server.$";
 import { Route as DotwellKnownMcpServerCardDotjsonRouteImport } from "./routes/[.]well-known/mcp/server-card[.]json";
 import { Route as DashboardSettingsAuthenticationIndexRouteImport } from "./routes/dashboard/settings/authentication/index";
-import { Route as DashboardAdminUsersIndexRouteImport } from "./routes/dashboard/admin/users/index";
+import { Route as AdmindashboardUsersIndexRouteImport } from "./routes/admin/(dashboard)/users/index";
+import { Route as AdmindashboardOverviewIndexRouteImport } from "./routes/admin/(dashboard)/overview/index";
 
 const SchemaDotjsonRoute = SchemaDotjsonRouteImport.update({
   id: "/schema.json",
@@ -140,6 +143,11 @@ const ApiHealthRoute = ApiHealthRouteImport.update({
   path: "/api/health",
   getParentRoute: () => rootRouteImport,
 } as any);
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: "/admin/login",
+  path: "/admin/login",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const DotwellKnownOpenidConfigurationRoute =
   DotwellKnownOpenidConfigurationRouteImport.update({
     id: "/.well-known/openid-configuration",
@@ -166,6 +174,11 @@ const UsernameSlugRoute = UsernameSlugRouteImport.update({
 const BuilderResumeIdRouteRoute = BuilderResumeIdRouteRouteImport.update({
   id: "/builder/$resumeId",
   path: "/builder/$resumeId",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const Admin_layoutRouteRoute = Admin_layoutRouteRouteImport.update({
+  id: "/admin/__layout",
+  path: "/admin",
   getParentRoute: () => rootRouteImport,
 } as any);
 const DashboardResumesIndexRoute = DashboardResumesIndexRouteImport.update({
@@ -262,11 +275,17 @@ const DashboardSettingsAuthenticationIndexRoute =
     path: "/settings/authentication/",
     getParentRoute: () => DashboardRouteRoute,
   } as any);
-const DashboardAdminUsersIndexRoute =
-  DashboardAdminUsersIndexRouteImport.update({
-    id: "/admin/users/",
+const AdmindashboardUsersIndexRoute =
+  AdmindashboardUsersIndexRouteImport.update({
+    id: "/admin/(dashboard)/users/",
     path: "/admin/users/",
-    getParentRoute: () => DashboardRouteRoute,
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const AdmindashboardOverviewIndexRoute =
+  AdmindashboardOverviewIndexRouteImport.update({
+    id: "/admin/(dashboard)/overview/",
+    path: "/admin/overview/",
+    getParentRoute: () => rootRouteImport,
   } as any);
 
 export interface FileRoutesByFullPath {
@@ -274,11 +293,13 @@ export interface FileRoutesByFullPath {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
+  "/admin": typeof Admin_layoutRouteRoute;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/.well-known/oauth-authorization-server": typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   "/.well-known/oauth-protected-resource": typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   "/.well-known/openid-configuration": typeof DotwellKnownOpenidConfigurationRoute;
+  "/admin/login": typeof AdminLoginRoute;
   "/api/health": typeof ApiHealthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
   "/auth/login": typeof AuthLoginRoute;
@@ -308,15 +329,18 @@ export interface FileRoutesByFullPath {
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/dashboard/job-search/": typeof DashboardJobSearchIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
-  "/dashboard/admin/users/": typeof DashboardAdminUsersIndexRoute;
+  "/admin/overview/": typeof AdmindashboardOverviewIndexRoute;
+  "/admin/users/": typeof AdmindashboardUsersIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRoutesByTo {
   "/schema.json": typeof SchemaDotjsonRoute;
+  "/admin": typeof Admin_layoutRouteRoute;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/.well-known/oauth-authorization-server": typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   "/.well-known/oauth-protected-resource": typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   "/.well-known/openid-configuration": typeof DotwellKnownOpenidConfigurationRoute;
+  "/admin/login": typeof AdminLoginRoute;
   "/api/health": typeof ApiHealthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
   "/auth/login": typeof AuthLoginRoute;
@@ -347,7 +371,8 @@ export interface FileRoutesByTo {
   "/builder/$resumeId": typeof BuilderResumeIdIndexRoute;
   "/dashboard/job-search": typeof DashboardJobSearchIndexRoute;
   "/dashboard/resumes": typeof DashboardResumesIndexRoute;
-  "/dashboard/admin/users": typeof DashboardAdminUsersIndexRoute;
+  "/admin/overview": typeof AdmindashboardOverviewIndexRoute;
+  "/admin/users": typeof AdmindashboardUsersIndexRoute;
   "/dashboard/settings/authentication": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRoutesById {
@@ -356,11 +381,13 @@ export interface FileRoutesById {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
+  "/admin/__layout": typeof Admin_layoutRouteRoute;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/.well-known/oauth-authorization-server": typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   "/.well-known/oauth-protected-resource": typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   "/.well-known/openid-configuration": typeof DotwellKnownOpenidConfigurationRoute;
+  "/admin/login": typeof AdminLoginRoute;
   "/api/health": typeof ApiHealthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
   "/auth/login": typeof AuthLoginRoute;
@@ -391,7 +418,8 @@ export interface FileRoutesById {
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/dashboard/job-search/": typeof DashboardJobSearchIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
-  "/dashboard/admin/users/": typeof DashboardAdminUsersIndexRoute;
+  "/admin/(dashboard)/overview/": typeof AdmindashboardOverviewIndexRoute;
+  "/admin/(dashboard)/users/": typeof AdmindashboardUsersIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRouteTypes {
@@ -401,11 +429,13 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
+    | "/admin"
     | "/builder/$resumeId"
     | "/$username/$slug"
     | "/.well-known/oauth-authorization-server"
     | "/.well-known/oauth-protected-resource"
     | "/.well-known/openid-configuration"
+    | "/admin/login"
     | "/api/health"
     | "/auth/forgot-password"
     | "/auth/login"
@@ -435,15 +465,18 @@ export interface FileRouteTypes {
     | "/builder/$resumeId/"
     | "/dashboard/job-search/"
     | "/dashboard/resumes/"
-    | "/dashboard/admin/users/"
+    | "/admin/overview/"
+    | "/admin/users/"
     | "/dashboard/settings/authentication/";
   fileRoutesByTo: FileRoutesByTo;
   to:
     | "/schema.json"
+    | "/admin"
     | "/$username/$slug"
     | "/.well-known/oauth-authorization-server"
     | "/.well-known/oauth-protected-resource"
     | "/.well-known/openid-configuration"
+    | "/admin/login"
     | "/api/health"
     | "/auth/forgot-password"
     | "/auth/login"
@@ -474,7 +507,8 @@ export interface FileRouteTypes {
     | "/builder/$resumeId"
     | "/dashboard/job-search"
     | "/dashboard/resumes"
-    | "/dashboard/admin/users"
+    | "/admin/overview"
+    | "/admin/users"
     | "/dashboard/settings/authentication";
   id:
     | "__root__"
@@ -482,11 +516,13 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
+    | "/admin/__layout"
     | "/builder/$resumeId"
     | "/$username/$slug"
     | "/.well-known/oauth-authorization-server"
     | "/.well-known/oauth-protected-resource"
     | "/.well-known/openid-configuration"
+    | "/admin/login"
     | "/api/health"
     | "/auth/forgot-password"
     | "/auth/login"
@@ -517,7 +553,8 @@ export interface FileRouteTypes {
     | "/builder/$resumeId/"
     | "/dashboard/job-search/"
     | "/dashboard/resumes/"
-    | "/dashboard/admin/users/"
+    | "/admin/(dashboard)/overview/"
+    | "/admin/(dashboard)/users/"
     | "/dashboard/settings/authentication/";
   fileRoutesById: FileRoutesById;
 }
@@ -526,11 +563,13 @@ export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren;
   SchemaDotjsonRoute: typeof SchemaDotjsonRoute;
+  Admin_layoutRouteRoute: typeof Admin_layoutRouteRoute;
   BuilderResumeIdRouteRoute: typeof BuilderResumeIdRouteRouteWithChildren;
   UsernameSlugRoute: typeof UsernameSlugRoute;
   DotwellKnownOauthAuthorizationServerRoute: typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   DotwellKnownOauthProtectedResourceRoute: typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   DotwellKnownOpenidConfigurationRoute: typeof DotwellKnownOpenidConfigurationRoute;
+  AdminLoginRoute: typeof AdminLoginRoute;
   ApiHealthRoute: typeof ApiHealthRoute;
   PrinterResumeIdRoute: typeof PrinterResumeIdRoute;
   McpIndexRoute: typeof McpIndexRoute;
@@ -539,6 +578,8 @@ export interface RootRouteChildren {
   ApiOpenapiSplatRoute: typeof ApiOpenapiSplatRoute;
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute;
   UploadsUserIdSplatRoute: typeof UploadsUserIdSplatRoute;
+  AdmindashboardOverviewIndexRoute: typeof AdmindashboardOverviewIndexRoute;
+  AdmindashboardUsersIndexRoute: typeof AdmindashboardUsersIndexRoute;
 }
 
 declare module "@tanstack/react-router" {
@@ -669,6 +710,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ApiHealthRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    "/admin/login": {
+      id: "/admin/login";
+      path: "/admin/login";
+      fullPath: "/admin/login";
+      preLoaderRoute: typeof AdminLoginRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/.well-known/openid-configuration": {
       id: "/.well-known/openid-configuration";
       path: "/.well-known/openid-configuration";
@@ -702,6 +750,13 @@ declare module "@tanstack/react-router" {
       path: "/builder/$resumeId";
       fullPath: "/builder/$resumeId";
       preLoaderRoute: typeof BuilderResumeIdRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/admin/__layout": {
+      id: "/admin/__layout";
+      path: "/admin";
+      fullPath: "/admin";
+      preLoaderRoute: typeof Admin_layoutRouteRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/dashboard/resumes/": {
@@ -823,12 +878,19 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof DashboardSettingsAuthenticationIndexRouteImport;
       parentRoute: typeof DashboardRouteRoute;
     };
-    "/dashboard/admin/users/": {
-      id: "/dashboard/admin/users/";
+    "/admin/(dashboard)/users/": {
+      id: "/admin/(dashboard)/users/";
       path: "/admin/users";
-      fullPath: "/dashboard/admin/users/";
-      preLoaderRoute: typeof DashboardAdminUsersIndexRouteImport;
-      parentRoute: typeof DashboardRouteRoute;
+      fullPath: "/admin/users/";
+      preLoaderRoute: typeof AdmindashboardUsersIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/admin/(dashboard)/overview/": {
+      id: "/admin/(dashboard)/overview/";
+      path: "/admin/overview";
+      fullPath: "/admin/overview/";
+      preLoaderRoute: typeof AdmindashboardOverviewIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
     };
   }
 }
@@ -883,7 +945,6 @@ interface DashboardRouteRouteChildren {
   DashboardSettingsProfileRoute: typeof DashboardSettingsProfileRoute;
   DashboardJobSearchIndexRoute: typeof DashboardJobSearchIndexRoute;
   DashboardResumesIndexRoute: typeof DashboardResumesIndexRoute;
-  DashboardAdminUsersIndexRoute: typeof DashboardAdminUsersIndexRoute;
   DashboardSettingsAuthenticationIndexRoute: typeof DashboardSettingsAuthenticationIndexRoute;
 }
 
@@ -897,7 +958,6 @@ const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardSettingsProfileRoute: DashboardSettingsProfileRoute,
   DashboardJobSearchIndexRoute: DashboardJobSearchIndexRoute,
   DashboardResumesIndexRoute: DashboardResumesIndexRoute,
-  DashboardAdminUsersIndexRoute: DashboardAdminUsersIndexRoute,
   DashboardSettingsAuthenticationIndexRoute:
     DashboardSettingsAuthenticationIndexRoute,
 };
@@ -952,6 +1012,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRouteRoute: AuthRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   SchemaDotjsonRoute: SchemaDotjsonRoute,
+  Admin_layoutRouteRoute: Admin_layoutRouteRoute,
   BuilderResumeIdRouteRoute: BuilderResumeIdRouteRouteWithChildren,
   UsernameSlugRoute: UsernameSlugRoute,
   DotwellKnownOauthAuthorizationServerRoute:
@@ -959,6 +1020,7 @@ const rootRouteChildren: RootRouteChildren = {
   DotwellKnownOauthProtectedResourceRoute:
     DotwellKnownOauthProtectedResourceRouteWithChildren,
   DotwellKnownOpenidConfigurationRoute: DotwellKnownOpenidConfigurationRoute,
+  AdminLoginRoute: AdminLoginRoute,
   ApiHealthRoute: ApiHealthRoute,
   PrinterResumeIdRoute: PrinterResumeIdRoute,
   McpIndexRoute: McpIndexRoute,
@@ -967,6 +1029,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApiOpenapiSplatRoute: ApiOpenapiSplatRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,
   UploadsUserIdSplatRoute: UploadsUserIdSplatRoute,
+  AdmindashboardOverviewIndexRoute: AdmindashboardOverviewIndexRoute,
+  AdmindashboardUsersIndexRoute: AdmindashboardUsersIndexRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

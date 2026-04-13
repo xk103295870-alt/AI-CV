@@ -10,11 +10,34 @@ export const adminRouter = {
         tags: ["Admin"],
         operationId: "listUsers",
         summary: "List all users",
-        description: "Returns a list of all registered users with their basic information. Requires authentication.",
+        description: "Returns a list of all registered users with their basic information. Requires admin authentication.",
         successDescription: "A list of users with their details.",
       })
       .handler(async ({ context }) => {
-        return await adminService.listUsers({ currentUserId: context.user.id });
+        // 检查是否是管理员
+        if (context.user.role !== "admin") {
+          throw new Error("Forbidden: Admin access required");
+        }
+        return await adminService.listUsers();
+      }),
+  },
+
+  statistics: {
+    overview: protectedProcedure
+      .route({
+        method: "GET",
+        path: "/admin/statistics/overview",
+        tags: ["Admin"],
+        operationId: "getOverviewStats",
+        summary: "Get overview statistics",
+        description: "Returns overview statistics for the admin dashboard. Requires admin authentication.",
+        successDescription: "Overview statistics data.",
+      })
+      .handler(async ({ context }) => {
+        if (context.user.role !== "admin") {
+          throw new Error("Forbidden: Admin access required");
+        }
+        return await adminService.getOverviewStats();
       }),
   },
 };
