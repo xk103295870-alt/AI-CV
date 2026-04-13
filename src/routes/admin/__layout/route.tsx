@@ -1,4 +1,4 @@
-import { createFileRoute, Outlet, redirect, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect, useRouter, useRouteContext } from "@tanstack/react-router";
 import { UsersIcon, LayoutDashboardIcon, SettingsIcon, SignOutIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
@@ -6,6 +6,7 @@ import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, S
 import { Link } from "@tanstack/react-router";
 import { BrandIcon } from "@/components/ui/brand-icon";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { authClient } from "@/integrations/auth/client";
 
 const adminNavItems = [
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/admin/__layout")({
 
 function AdminLayout() {
   const router = useRouter();
+  const { session } = useRouteContext({ from: "/admin/__layout" });
 
   const handleLogout = async () => {
     await authClient.signOut();
@@ -33,60 +35,64 @@ function AdminLayout() {
   };
 
   return (
-    <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full">
-        <Sidebar variant="inset" collapsible="icon">
-          <SidebarHeader>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <div className="flex items-center gap-2 px-2 py-3">
-                  <BrandIcon variant="icon" className="size-6" />
-                  <span className="font-semibold">管理后台</span>
-                </div>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarHeader>
+    <div className="flex min-h-screen w-full">
+      {/* Fixed Sidebar */}
+      <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r bg-background">
+        {/* Header */}
+        <div className="flex h-16 items-center gap-2 border-b px-4">
+          <BrandIcon variant="icon" className="size-6" />
+          <span className="font-semibold">管理后台</span>
+        </div>
 
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>菜单</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  {adminNavItems.map((item) => (
-                    <SidebarMenuItem key={item.href}>
-                      <SidebarMenuButton
-                        render={
-                          <Link to={item.href} activeProps={{ className: "bg-sidebar-accent" }}>
-                            <item.icon className="size-4" />
-                            <span>{item.label}</span>
-                          </Link>
-                        }
-                      />
-                    </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          </SidebarContent>
-
-          <SidebarFooter className="p-4">
-            <Button 
-              variant="ghost" 
-              className="w-full justify-start gap-2 text-destructive hover:text-destructive hover:bg-destructive/10"
-              onClick={handleLogout}
+        {/* Navigation */}
+        <nav className="space-y-1 p-4">
+          <div className="mb-2 text-xs font-medium text-muted-foreground">菜单</div>
+          {adminNavItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              activeProps={{ className: "bg-accent text-accent-foreground" }}
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
             >
-              <SignOutIcon className="size-4" />
-              <span>退出登录</span>
-            </Button>
-          </SidebarFooter>
+              <item.icon className="size-4" />
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-          <SidebarRail />
-        </Sidebar>
+        <Separator className="my-4" />
 
-        <main className="flex-1 overflow-auto bg-muted/20 p-6">
-          <Outlet />
-        </main>
-      </div>
-    </SidebarProvider>
+        {/* User Info */}
+        <div className="px-4 py-2">
+          <div className="mb-2 text-xs font-medium text-muted-foreground">当前用户</div>
+          <div className="flex items-center gap-2 rounded-md bg-muted p-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
+              <span className="text-sm font-medium">{session.user.name.charAt(0)}</span>
+            </div>
+            <div className="overflow-hidden">
+              <p className="truncate text-sm font-medium">{session.user.name}</p>
+              <p className="truncate text-xs text-muted-foreground">{session.user.email}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Logout Button */}
+        <div className="absolute bottom-0 left-0 right-0 border-t bg-background p-4">
+          <Button 
+            variant="outline" 
+            className="w-full justify-start gap-2 border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground"
+            onClick={handleLogout}
+          >
+            <SignOutIcon className="size-4" />
+            退出登录
+          </Button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="ml-64 flex-1 overflow-auto bg-muted/20 p-6">
+        <Outlet />
+      </main>
+    </div>
   );
 }
