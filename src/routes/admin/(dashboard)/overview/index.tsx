@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { UsersIcon, FileTextIcon, ActivityIcon, TrendingUpIcon } from "@phosphor-icons/react";
+import { UsersIcon, FileTextIcon, ActivityIcon, TrendUpIcon } from "@phosphor-icons/react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { orpc } from "@/integrations/orpc/client";
@@ -69,7 +69,7 @@ function AdminOverview() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">本周新增</CardTitle>
-            <TrendingUpIcon className="h-4 w-4 text-muted-foreground" />
+            <TrendUpIcon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
