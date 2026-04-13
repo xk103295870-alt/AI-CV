@@ -1,3 +1,4 @@
+import { adminRouter } from "./admin";
 import { aiRouter } from "./ai";
 import { authRouter } from "./auth";
 import { flagsRouter } from "./flags";
@@ -8,6 +9,7 @@ import { statisticsRouter } from "./statistics";
 import { storageRouter } from "./storage";
 
 export default {
+  admin: adminRouter,
   ai: aiRouter,
   auth: authRouter,
   flags: flagsRouter,

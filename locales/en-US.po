@@ -3302,3 +3302,51 @@ msgstr "Job Search (Coming Soon)"
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Job Search API (Coming Soon)"
 msgstr "Job Search API (Coming Soon)"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Admin"
+msgstr "Admin"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "User Management"
+msgstr "User Management"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Total Users"
+msgstr "Total Users"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Registered Users"
+msgstr "Registered Users"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "User"
+msgstr "User"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Email"
+msgstr "Email"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Status"
+msgstr "Status"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Role"
+msgstr "Role"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Registered"
+msgstr "Registered"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Active"
+msgstr "Active"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Banned"
+msgstr "Banned"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Failed to load users. Please try again."
+msgstr "Failed to load users. Please try again."

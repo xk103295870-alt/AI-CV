@@ -3307,3 +3307,55 @@ msgstr "工作搜尋（即將推出）"
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Job Search API (Coming Soon)"
 msgstr "工作搜尋 API（即將推出）"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Admin"
+msgstr "管理"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "User Management"
+msgstr "用戶管理"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Total Users"
+msgstr "總用戶數"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Registered Users"
+msgstr "註冊用戶"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "User"
+msgstr "用戶"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Email"
+msgstr "郵箱"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Status"
+msgstr "狀態"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Role"
+msgstr "角色"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Registered"
+msgstr "註冊時間"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Active"
+msgstr "正常"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Banned"
+msgstr "已封禁"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Admin"
+msgstr "管理員"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Failed to load users. Please try again."
+msgstr "加載用戶失敗，請重試。"

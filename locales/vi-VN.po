@@ -3307,3 +3307,51 @@ msgstr "Tìm kiếm việc làm (Sắp ra mắt)"
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Job Search API (Coming Soon)"
 msgstr "API Tìm kiếm việc làm (Sắp ra mắt)"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Admin"
+msgstr "Quản trị"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "User Management"
+msgstr "Quản lý ngườ i dùng"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Total Users"
+msgstr "Tổng số ngườ i dùng"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Registered Users"
+msgstr "Ngườ i dùng đã đăng ký"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "User"
+msgstr "Ngườ i dùng"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Email"
+msgstr "Email"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Status"
+msgstr "Trạng thái"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Role"
+msgstr "Vai trò"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Registered"
+msgstr "Đăng ký"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Active"
+msgstr "Hoạt động"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Banned"
+msgstr "Đã cấm"
+
+#: src/routes/dashboard/admin/users/index.tsx
+msgid "Failed to load users. Please try again."
+msgstr "Không thể tải ngườ i dùng. Vui lòng thử lại."

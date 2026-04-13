@@ -10,7 +10,9 @@ import {
   KeyIcon,
   ReadCvLogoIcon,
   ShieldCheckIcon,
+  ShieldIcon,
   UserCircleIcon,
+  UsersIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
@@ -56,6 +58,14 @@ const appSidebarItems = [
   },
 ] as const satisfies SidebarItem[];
 
+const adminSidebarItems = [
+  {
+    icon: <UsersIcon />,
+    label: msg`User Management`,
+    href: "/dashboard/admin/users",
+  },
+] as const satisfies SidebarItem[];
+
 const settingsSidebarItems = [
   {
     icon: <UserCircleIcon />,
@@ -72,7 +82,6 @@ const settingsSidebarItems = [
     label: msg`Authentication`,
     href: "/dashboard/settings/authentication",
   },
-
   {
     icon: <BrainIcon />,
     label: msg`Artificial Intelligence`,
@@ -148,6 +157,15 @@ export function DashboardSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarItemList items={appSidebarItems} />
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>
+            <Trans>Admin</Trans>
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarItemList items={adminSidebarItems} />
           </SidebarGroupContent>
         </SidebarGroup>
 

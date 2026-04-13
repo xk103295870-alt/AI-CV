@@ -49,6 +49,7 @@ import { Route as DotwellKnownOauthProtectedResourceSplatRouteImport } from "./r
 import { Route as DotwellKnownOauthAuthorizationServerSplatRouteImport } from "./routes/[.]well-known/oauth-authorization-server.$";
 import { Route as DotwellKnownMcpServerCardDotjsonRouteImport } from "./routes/[.]well-known/mcp/server-card[.]json";
 import { Route as DashboardSettingsAuthenticationIndexRouteImport } from "./routes/dashboard/settings/authentication/index";
+import { Route as DashboardAdminUsersIndexRouteImport } from "./routes/dashboard/admin/users/index";
 
 const SchemaDotjsonRoute = SchemaDotjsonRouteImport.update({
   id: "/schema.json",
@@ -261,6 +262,12 @@ const DashboardSettingsAuthenticationIndexRoute =
     path: "/settings/authentication/",
     getParentRoute: () => DashboardRouteRoute,
   } as any);
+const DashboardAdminUsersIndexRoute =
+  DashboardAdminUsersIndexRouteImport.update({
+    id: "/admin/users/",
+    path: "/admin/users/",
+    getParentRoute: () => DashboardRouteRoute,
+  } as any);
 
 export interface FileRoutesByFullPath {
   "/": typeof HomeIndexRoute;
@@ -301,6 +308,7 @@ export interface FileRoutesByFullPath {
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/dashboard/job-search/": typeof DashboardJobSearchIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
+  "/dashboard/admin/users/": typeof DashboardAdminUsersIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRoutesByTo {
@@ -339,6 +347,7 @@ export interface FileRoutesByTo {
   "/builder/$resumeId": typeof BuilderResumeIdIndexRoute;
   "/dashboard/job-search": typeof DashboardJobSearchIndexRoute;
   "/dashboard/resumes": typeof DashboardResumesIndexRoute;
+  "/dashboard/admin/users": typeof DashboardAdminUsersIndexRoute;
   "/dashboard/settings/authentication": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRoutesById {
@@ -382,6 +391,7 @@ export interface FileRoutesById {
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/dashboard/job-search/": typeof DashboardJobSearchIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
+  "/dashboard/admin/users/": typeof DashboardAdminUsersIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
 }
 export interface FileRouteTypes {
@@ -425,6 +435,7 @@ export interface FileRouteTypes {
     | "/builder/$resumeId/"
     | "/dashboard/job-search/"
     | "/dashboard/resumes/"
+    | "/dashboard/admin/users/"
     | "/dashboard/settings/authentication/";
   fileRoutesByTo: FileRoutesByTo;
   to:
@@ -463,6 +474,7 @@ export interface FileRouteTypes {
     | "/builder/$resumeId"
     | "/dashboard/job-search"
     | "/dashboard/resumes"
+    | "/dashboard/admin/users"
     | "/dashboard/settings/authentication";
   id:
     | "__root__"
@@ -505,6 +517,7 @@ export interface FileRouteTypes {
     | "/builder/$resumeId/"
     | "/dashboard/job-search/"
     | "/dashboard/resumes/"
+    | "/dashboard/admin/users/"
     | "/dashboard/settings/authentication/";
   fileRoutesById: FileRoutesById;
 }
@@ -810,6 +823,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof DashboardSettingsAuthenticationIndexRouteImport;
       parentRoute: typeof DashboardRouteRoute;
     };
+    "/dashboard/admin/users/": {
+      id: "/dashboard/admin/users/";
+      path: "/admin/users";
+      fullPath: "/dashboard/admin/users/";
+      preLoaderRoute: typeof DashboardAdminUsersIndexRouteImport;
+      parentRoute: typeof DashboardRouteRoute;
+    };
   }
 }
 
@@ -863,6 +883,7 @@ interface DashboardRouteRouteChildren {
   DashboardSettingsProfileRoute: typeof DashboardSettingsProfileRoute;
   DashboardJobSearchIndexRoute: typeof DashboardJobSearchIndexRoute;
   DashboardResumesIndexRoute: typeof DashboardResumesIndexRoute;
+  DashboardAdminUsersIndexRoute: typeof DashboardAdminUsersIndexRoute;
   DashboardSettingsAuthenticationIndexRoute: typeof DashboardSettingsAuthenticationIndexRoute;
 }
 
@@ -876,6 +897,7 @@ const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardSettingsProfileRoute: DashboardSettingsProfileRoute,
   DashboardJobSearchIndexRoute: DashboardJobSearchIndexRoute,
   DashboardResumesIndexRoute: DashboardResumesIndexRoute,
+  DashboardAdminUsersIndexRoute: DashboardAdminUsersIndexRoute,
   DashboardSettingsAuthenticationIndexRoute:
     DashboardSettingsAuthenticationIndexRoute,
 };
