@@ -10,9 +10,7 @@ import {
   KeyIcon,
   ReadCvLogoIcon,
   ShieldCheckIcon,
-  ShieldIcon,
   UserCircleIcon,
-  UsersIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
@@ -55,14 +53,6 @@ const appSidebarItems = [
     icon: <BriefcaseIcon />,
     label: msg`Job Search (Coming Soon)`,
     href: "/dashboard/job-search",
-  },
-] as const satisfies SidebarItem[];
-
-const adminSidebarItems = [
-  {
-    icon: <UsersIcon />,
-    label: msg`User Management`,
-    href: "/dashboard/admin/users",
   },
 ] as const satisfies SidebarItem[];
 
@@ -157,15 +147,6 @@ export function DashboardSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarItemList items={appSidebarItems} />
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>
-            <Trans>Admin</Trans>
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarItemList items={adminSidebarItems} />
           </SidebarGroupContent>
         </SidebarGroup>
 
