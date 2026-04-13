@@ -1,9 +1,12 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import { ShieldIcon, UsersIcon, LayoutDashboardIcon, SettingsIcon } from "@phosphor-icons/react";
+import { createFileRoute, Outlet, redirect, useRouter } from "@tanstack/react-router";
+import { ShieldIcon, UsersIcon, LayoutDashboardIcon, SettingsIcon, SignOutIcon } from "@phosphor-icons/react";
+import { toast } from "sonner";
 
-import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarRail } from "@/components/ui/sidebar";
+import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarRail, SidebarFooter } from "@/components/ui/sidebar";
 import { Link } from "@tanstack/react-router";
 import { BrandIcon } from "@/components/ui/brand-icon";
+import { Button } from "@/components/ui/button";
+import { authClient } from "@/integrations/auth/client";
 
 const adminNavItems = [
   { icon: LayoutDashboardIcon, label: "概览", href: "/admin/overview" },
@@ -22,6 +25,14 @@ export const Route = createFileRoute("/admin/__layout")({
 });
 
 function AdminLayout() {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await authClient.signOut();
+    toast.success("已退出登录");
+    router.navigate({ to: "/admin/login", replace: true });
+  };
+
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="flex min-h-screen w-full">
@@ -57,6 +68,17 @@ function AdminLayout() {
               </SidebarGroupContent>
             </SidebarGroup>
           </SidebarContent>
+
+          <SidebarFooter>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton onClick={handleLogout} className="text-destructive hover:text-destructive">
+                  <SignOutIcon className="size-4" />
+                  <span>退出登录</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarFooter>
 
           <SidebarRail />
         </Sidebar>
