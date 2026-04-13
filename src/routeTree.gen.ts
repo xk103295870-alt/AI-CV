@@ -28,12 +28,12 @@ import { Route as AuthLoginRouteImport } from "./routes/auth/login";
 import { Route as AuthForgotPasswordRouteImport } from "./routes/auth/forgot-password";
 import { Route as ApiHealthRouteImport } from "./routes/api/health";
 import { Route as AdminLoginRouteImport } from "./routes/admin/login";
+import { Route as Admin_layoutRouteImport } from "./routes/admin/__layout";
 import { Route as DotwellKnownOpenidConfigurationRouteImport } from "./routes/[.]well-known/openid-configuration";
 import { Route as DotwellKnownOauthProtectedResourceRouteImport } from "./routes/[.]well-known/oauth-protected-resource";
 import { Route as DotwellKnownOauthAuthorizationServerRouteImport } from "./routes/[.]well-known/oauth-authorization-server";
 import { Route as UsernameSlugRouteImport } from "./routes/$username/$slug";
 import { Route as BuilderResumeIdRouteRouteImport } from "./routes/builder/$resumeId/route";
-import { Route as Admin_layoutRouteRouteImport } from "./routes/admin/__layout/route";
 import { Route as DashboardResumesIndexRouteImport } from "./routes/dashboard/resumes/index";
 import { Route as DashboardJobSearchIndexRouteImport } from "./routes/dashboard/job-search/index";
 import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resumeId/index";
@@ -148,6 +148,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: "/admin/login",
   getParentRoute: () => rootRouteImport,
 } as any);
+const Admin_layoutRoute = Admin_layoutRouteImport.update({
+  id: "/admin/__layout",
+  path: "/admin",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const DotwellKnownOpenidConfigurationRoute =
   DotwellKnownOpenidConfigurationRouteImport.update({
     id: "/.well-known/openid-configuration",
@@ -174,11 +179,6 @@ const UsernameSlugRoute = UsernameSlugRouteImport.update({
 const BuilderResumeIdRouteRoute = BuilderResumeIdRouteRouteImport.update({
   id: "/builder/$resumeId",
   path: "/builder/$resumeId",
-  getParentRoute: () => rootRouteImport,
-} as any);
-const Admin_layoutRouteRoute = Admin_layoutRouteRouteImport.update({
-  id: "/admin/__layout",
-  path: "/admin",
   getParentRoute: () => rootRouteImport,
 } as any);
 const DashboardResumesIndexRoute = DashboardResumesIndexRouteImport.update({
@@ -293,12 +293,12 @@ export interface FileRoutesByFullPath {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
-  "/admin": typeof Admin_layoutRouteRoute;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/.well-known/oauth-authorization-server": typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   "/.well-known/oauth-protected-resource": typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   "/.well-known/openid-configuration": typeof DotwellKnownOpenidConfigurationRoute;
+  "/admin": typeof Admin_layoutRoute;
   "/admin/login": typeof AdminLoginRoute;
   "/api/health": typeof ApiHealthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
@@ -335,11 +335,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   "/schema.json": typeof SchemaDotjsonRoute;
-  "/admin": typeof Admin_layoutRouteRoute;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/.well-known/oauth-authorization-server": typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   "/.well-known/oauth-protected-resource": typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   "/.well-known/openid-configuration": typeof DotwellKnownOpenidConfigurationRoute;
+  "/admin": typeof Admin_layoutRoute;
   "/admin/login": typeof AdminLoginRoute;
   "/api/health": typeof ApiHealthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
@@ -381,12 +381,12 @@ export interface FileRoutesById {
   "/auth": typeof AuthRouteRouteWithChildren;
   "/dashboard": typeof DashboardRouteRouteWithChildren;
   "/schema.json": typeof SchemaDotjsonRoute;
-  "/admin/__layout": typeof Admin_layoutRouteRoute;
   "/builder/$resumeId": typeof BuilderResumeIdRouteRouteWithChildren;
   "/$username/$slug": typeof UsernameSlugRoute;
   "/.well-known/oauth-authorization-server": typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   "/.well-known/oauth-protected-resource": typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   "/.well-known/openid-configuration": typeof DotwellKnownOpenidConfigurationRoute;
+  "/admin/__layout": typeof Admin_layoutRoute;
   "/admin/login": typeof AdminLoginRoute;
   "/api/health": typeof ApiHealthRoute;
   "/auth/forgot-password": typeof AuthForgotPasswordRoute;
@@ -429,12 +429,12 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
-    | "/admin"
     | "/builder/$resumeId"
     | "/$username/$slug"
     | "/.well-known/oauth-authorization-server"
     | "/.well-known/oauth-protected-resource"
     | "/.well-known/openid-configuration"
+    | "/admin"
     | "/admin/login"
     | "/api/health"
     | "/auth/forgot-password"
@@ -471,11 +471,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo;
   to:
     | "/schema.json"
-    | "/admin"
     | "/$username/$slug"
     | "/.well-known/oauth-authorization-server"
     | "/.well-known/oauth-protected-resource"
     | "/.well-known/openid-configuration"
+    | "/admin"
     | "/admin/login"
     | "/api/health"
     | "/auth/forgot-password"
@@ -516,12 +516,12 @@ export interface FileRouteTypes {
     | "/auth"
     | "/dashboard"
     | "/schema.json"
-    | "/admin/__layout"
     | "/builder/$resumeId"
     | "/$username/$slug"
     | "/.well-known/oauth-authorization-server"
     | "/.well-known/oauth-protected-resource"
     | "/.well-known/openid-configuration"
+    | "/admin/__layout"
     | "/admin/login"
     | "/api/health"
     | "/auth/forgot-password"
@@ -563,12 +563,12 @@ export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren;
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren;
   SchemaDotjsonRoute: typeof SchemaDotjsonRoute;
-  Admin_layoutRouteRoute: typeof Admin_layoutRouteRoute;
   BuilderResumeIdRouteRoute: typeof BuilderResumeIdRouteRouteWithChildren;
   UsernameSlugRoute: typeof UsernameSlugRoute;
   DotwellKnownOauthAuthorizationServerRoute: typeof DotwellKnownOauthAuthorizationServerRouteWithChildren;
   DotwellKnownOauthProtectedResourceRoute: typeof DotwellKnownOauthProtectedResourceRouteWithChildren;
   DotwellKnownOpenidConfigurationRoute: typeof DotwellKnownOpenidConfigurationRoute;
+  Admin_layoutRoute: typeof Admin_layoutRoute;
   AdminLoginRoute: typeof AdminLoginRoute;
   ApiHealthRoute: typeof ApiHealthRoute;
   PrinterResumeIdRoute: typeof PrinterResumeIdRoute;
@@ -717,6 +717,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof AdminLoginRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    "/admin/__layout": {
+      id: "/admin/__layout";
+      path: "/admin";
+      fullPath: "/admin";
+      preLoaderRoute: typeof Admin_layoutRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     "/.well-known/openid-configuration": {
       id: "/.well-known/openid-configuration";
       path: "/.well-known/openid-configuration";
@@ -750,13 +757,6 @@ declare module "@tanstack/react-router" {
       path: "/builder/$resumeId";
       fullPath: "/builder/$resumeId";
       preLoaderRoute: typeof BuilderResumeIdRouteRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/admin/__layout": {
-      id: "/admin/__layout";
-      path: "/admin";
-      fullPath: "/admin";
-      preLoaderRoute: typeof Admin_layoutRouteRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/dashboard/resumes/": {
@@ -1012,7 +1012,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRouteRoute: AuthRouteRouteWithChildren,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   SchemaDotjsonRoute: SchemaDotjsonRoute,
-  Admin_layoutRouteRoute: Admin_layoutRouteRoute,
   BuilderResumeIdRouteRoute: BuilderResumeIdRouteRouteWithChildren,
   UsernameSlugRoute: UsernameSlugRoute,
   DotwellKnownOauthAuthorizationServerRoute:
@@ -1020,6 +1019,7 @@ const rootRouteChildren: RootRouteChildren = {
   DotwellKnownOauthProtectedResourceRoute:
     DotwellKnownOauthProtectedResourceRouteWithChildren,
   DotwellKnownOpenidConfigurationRoute: DotwellKnownOpenidConfigurationRoute,
+  Admin_layoutRoute: Admin_layoutRoute,
   AdminLoginRoute: AdminLoginRoute,
   ApiHealthRoute: ApiHealthRoute,
   PrinterResumeIdRoute: PrinterResumeIdRoute,
