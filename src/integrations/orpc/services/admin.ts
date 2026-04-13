@@ -1,4 +1,5 @@
-import { desc, sql, gte } from "drizzle-orm";
+import { ORPCError } from "@orpc/server";
+import { desc, eq, gte, sql } from "drizzle-orm";
 
 import { db } from "../../drizzle/client";
 import * as schema from "../../drizzle/schema";
@@ -42,6 +43,18 @@ const dummyUsers = [
 ];
 
 class AdminService {
+  async assertAdmin(userId: string): Promise<void> {
+    const [adminUser] = await db
+      .select({ role: schema.user.role })
+      .from(schema.user)
+      .where(eq(schema.user.id, userId))
+      .limit(1);
+
+    if (adminUser?.role !== "admin") {
+      throw new ORPCError("FORBIDDEN", { message: "Forbidden: Admin access required" });
+    }
+  }
+
   async listUsers(): Promise<ListUsersResult> {
     // 检查是否有用户，如果没有则创建虚拟用户
     const existingUsers = await db.select({ count: sql<number>`count(*)` }).from(schema.user);
@@ -105,13 +118,9 @@ class AdminService {
     for (const user of users.slice(0, 5)) {
       try {
         await db.insert(schema.resume).values({
-          id: generateId(),
           userId: user.id,
           name: `${dummyUsers[Math.floor(Math.random() * dummyUsers.length)].name}的简历`,
           slug: `resume-${generateId().slice(0, 8)}`,
-          data: {},
-          createdAt: new Date(),
-          updatedAt: new Date(),
         });
       } catch (error) {
         // 忽略错误

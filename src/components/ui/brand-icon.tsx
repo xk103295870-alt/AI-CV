@@ -6,7 +6,7 @@ type Props = {
   size?: "sm" | "md" | "lg";
 };
 
-export function BrandIcon({ variant = "logo", className, size = "md" }: Props) {
+export function BrandIcon({ className, size = "md" }: Props) {
   const sizeClasses = {
     sm: "text-xl",
     md: "text-2xl",

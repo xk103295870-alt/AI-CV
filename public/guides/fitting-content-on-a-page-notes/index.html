@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注意事项：内容适配页面</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #09090b;
+        --panel: #121216;
+        --text: #f5f5f5;
+        --muted: #a1a1aa;
+        --line: #27272a;
+        --accent: #22c55e;
+        --warn: #f59e0b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 20% -10%, #1c1c23 0%, var(--bg) 45%);
+        color: var(--text);
+        font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 20px 56px;
+      }
+
+      .card {
+        background: color-mix(in oklab, var(--panel) 88%, black);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 22px 20px;
+        margin-top: 16px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      h1 {
+        font-size: clamp(26px, 3.8vw, 38px);
+        margin-bottom: 6px;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 17px;
+        margin-bottom: 6px;
+      }
+
+      p {
+        margin: 6px 0 0;
+        color: var(--muted);
+      }
+
+      ul,
+      ol {
+        margin: 10px 0 0 18px;
+        padding: 0;
+      }
+
+      li + li {
+        margin-top: 6px;
+      }
+
+      strong {
+        color: var(--text);
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .step {
+        background: #0f0f13;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px;
+      }
+
+      .step p {
+        margin-top: 4px;
+      }
+
+      .operation {
+        margin: 8px 0 0 18px;
+        color: var(--muted);
+      }
+
+      .operation li + li {
+        margin-top: 4px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        color: var(--text);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .btn:hover {
+        border-color: #3f3f46;
+        background: #17171d;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>注意事项：内容适配页面</h1>
+      <p>当简历内容高度超过 A4 / Letter 页面时，请按以下顺序处理，避免导出 PDF 时出现截断、错位或显示不完整。</p>
+
+      <section class="card">
+        <h2>优先处理顺序</h2>
+        <ol>
+          <li><strong>先改内容，再改样式。</strong> 先删减冗余文本、移动次要条目，再考虑缩小字号和间距。</li>
+          <li><strong>如无需打印，优先使用 Free-Form。</strong> Free-Form 无固定高度限制，最省心。</li>
+          <li><strong>保证可读性底线。</strong> 正文字号建议保持在 9pt-12pt 之间。</li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <h2>六个快速修复动作</h2>
+        <div class="grid">
+          <article class="step">
+            <h3>1. 切换为 Free-Form</h3>
+            <p>如果不需要打印纸质版，优先切换为 Free-Form（无固定分页高度）。</p>
+            <ol class="operation">
+              <li>打开右侧侧边栏，进入 <strong>页面（Page）</strong> 设置。</li>
+              <li>找到 <strong>格式（Format）</strong> 选项。</li>
+              <li>将格式从 A4 / Letter 切换为 <strong>Free-Form</strong>。</li>
+              <li>确认预览区域不再出现“内容过高”提示。</li>
+            </ol>
+          </article>
+          <article class="step">
+            <h3>2. 精简文本块</h3>
+            <p>长段落改为要点；每段经历保留 3-5 条高价值成果，删掉泛化描述。</p>
+          </article>
+          <article class="step">
+            <h3>3. 使用多列布局</h3>
+            <p>技能、语言、兴趣、证书等短条目优先多列展示，压缩垂直高度。</p>
+          </article>
+          <article class="step">
+            <h3>4. 移到下一页</h3>
+            <p>把次要信息移到第二页，第一页保留最相关、最新的核心经历。</p>
+          </article>
+          <article class="step">
+            <h3>5. 微调版式参数</h3>
+            <p>可微调字号、行高、页边距、分区间距、侧栏比例、头像尺寸。</p>
+          </article>
+          <article class="step">
+            <h3>6. 隐藏非关键模块</h3>
+            <p>兴趣、过旧证书、弱相关志愿经历等，可按岗位相关性决定是否隐藏。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>常见问题排查</h2>
+        <ul>
+          <li><strong>已经调整仍溢出：</strong> 继续删减内容，或更换更省空间的模板。</li>
+          <li><strong>预览与 PDF 看起来不同：</strong> 刷新页面、确认字体已加载、浏览器缩放设为 100%。</li>
+          <li><strong>字号被压得太小：</strong> 小于 9pt 通常不建议，优先继续精简内容而不是继续缩字。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>执行建议</h2>
+        <p>每次只改一个参数并观察预览效果。通常“字号减少 0.5pt + 略微减小页边距”就能回收多行空间。</p>
+        <div class="actions">
+          <a class="btn" href="javascript:history.back()">返回上一页</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

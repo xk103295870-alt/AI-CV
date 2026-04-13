@@ -7,7 +7,6 @@ import {
   BrainIcon,
   BriefcaseIcon,
   GearSixIcon,
-  KeyIcon,
   ReadCvLogoIcon,
   ShieldCheckIcon,
   UserCircleIcon,

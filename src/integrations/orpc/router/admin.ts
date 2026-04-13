@@ -14,10 +14,7 @@ export const adminRouter = {
         successDescription: "A list of users with their details.",
       })
       .handler(async ({ context }) => {
-        // 检查是否是管理员
-        if (context.user.role !== "admin") {
-          throw new Error("Forbidden: Admin access required");
-        }
+        await adminService.assertAdmin(context.user.id);
         return await adminService.listUsers();
       }),
   },
@@ -34,9 +31,7 @@ export const adminRouter = {
         successDescription: "Overview statistics data.",
       })
       .handler(async ({ context }) => {
-        if (context.user.role !== "admin") {
-          throw new Error("Forbidden: Admin access required");
-        }
+        await adminService.assertAdmin(context.user.id);
         return await adminService.getOverviewStats();
       }),
   },
