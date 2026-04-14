@@ -1,17 +1,9 @@
 <div align="center">
-  <a href="https://rxresu.me">
-    <img src="public/opengraph/banner.jpg" alt="W简历" />
-  </a>
+  <img src="public/banner-wstudio.jpg" alt="W简历" />
 
   <h1>W简历</h1>
 
   <p>W简历（W简历）是一款免费开源的简历构建工具，让您轻松创建、更新和分享专业简历。</p>
-
-  <p>
-    <a href="https://rxresu.me"><strong>立即开始</strong></a>
-    ·
-    <a href="https://docs.rxresu.me"><strong>了解更多</strong></a>
-  </p>
 
   <p>
     <img src="https://img.shields.io/github/package-json/v/amruthpillai/reactive-resume?style=flat-square" alt="版本">
