@@ -84,9 +84,9 @@ function RouteComponent() {
 
   return (
     <>
-      {/* 语言切换 */}
-      <div className="flex justify-end">
-        <div className="flex items-center gap-2">
+      {/* 语言切换 - 右上角 */}
+      <div className="fixed right-4 top-4 z-50">
+        <div className="flex items-center gap-2 rounded-lg bg-background/80 px-3 py-2 backdrop-blur">
           <GlobeIcon className="size-4 text-muted-foreground" />
           <LocaleCombobox />
         </div>
