@@ -109,9 +109,9 @@ function RouteComponent() {
         <div className="absolute inset-0 flex items-center">
           <Separator className="w-full" />
         </div>
-        <div className="relative flex justify-center text-xs uppercase">
+        <div className="relative flex justify-center text-xs">
           <span className="bg-background px-2 text-muted-foreground">
-            <Trans>通过以下方式可以联系到开发者</Trans>
+            本版本为试运行版本，如需修改密码，联系开发者
           </span>
         </div>
       </div>
@@ -122,15 +122,12 @@ function RouteComponent() {
           className="w-full gap-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
           nativeButton={false}
           render={
-            <a href="weixin://" target="_blank" rel="noopener noreferrer">
+            <a href="https://work.weixin.qq.com/ca/cawcde3ad5b17ce10c" target="_blank" rel="noopener noreferrer">
               <WechatLogoIcon className="size-5" />
-              <Trans>添加企业微信客服</Trans>
+              添加企业微信客服
             </a>
           }
         />
-        <p className="mt-2 text-xs text-muted-foreground">
-          <Trans>点击上方图标即可通过企业微信添加开发者</Trans>
-        </p>
       </div>
     </>
   );
