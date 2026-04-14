@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { ArrowRightIcon, EyeIcon, EyeSlashIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, EyeIcon, EyeSlashIcon, GlobeIcon } from "@phosphor-icons/react";
 import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/integrations/auth/client";
+import { LocaleCombobox } from "@/components/locale/combobox";
 
 import { SocialAuth } from "./-components/social-auth";
 
@@ -83,6 +84,14 @@ function RouteComponent() {
 
   return (
     <>
+      {/* 语言切换 */}
+      <div className="flex justify-end">
+        <div className="flex items-center gap-2">
+          <GlobeIcon className="size-4 text-muted-foreground" />
+          <LocaleCombobox />
+        </div>
+      </div>
+
       <div className="space-y-1 text-center">
         <h1 className="text-2xl font-bold tracking-tight">
           <Trans>Sign in to your account</Trans>
