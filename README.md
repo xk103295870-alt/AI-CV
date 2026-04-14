@@ -5,6 +5,8 @@
 
   <p>W简历（W简历）是一款免费开源的简历构建工具，让您轻松创建、更新和分享专业简历。</p>
 
+  <p><strong>立即开始</strong></p>
+
   <p>
     <img src="https://img.shields.io/github/package-json/v/amruthpillai/reactive-resume?style=flat-square" alt="版本">
     <img src="https://img.shields.io/github/stars/amruthpillai/Reactive-Resume?style=flat-square" alt="GitHub Stars">
