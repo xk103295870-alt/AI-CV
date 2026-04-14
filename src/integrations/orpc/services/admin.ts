@@ -4,6 +4,7 @@ import { desc, eq, gte, sql } from "drizzle-orm";
 import { db } from "../../drizzle/client";
 import * as schema from "../../drizzle/schema";
 import { generateId } from "@/utils/string";
+import { hashPassword } from "@/utils/password";
 
 export type UserListItem = {
   id: string;
@@ -158,6 +159,39 @@ class AdminService {
       todayActive: Number(todayActiveResult?.count ?? 0),
       weeklyNewUsers: Number(weeklyNewResult?.count ?? 0),
     };
+  }
+
+  async resetUserPassword(userId: string, newPassword: string): Promise<void> {
+    // 检查用户是否存在
+    const [user] = await db
+      .select({ id: schema.user.id })
+      .from(schema.user)
+      .where(eq(schema.user.id, userId))
+      .limit(1);
+
+    if (!user) {
+      throw new ORPCError("NOT_FOUND", { message: "用户不存在" });
+    }
+
+    // 生成密码哈希
+    const passwordHash = await hashPassword(newPassword);
+
+    // 更新密码
+    await db
+      .update(schema.user)
+      .set({ 
+        updatedAt: new Date(),
+      })
+      .where(eq(schema.user.id, userId));
+
+    // 更新账号密码（account 表）
+    await db
+      .update(schema.account)
+      .set({ 
+        password: passwordHash,
+        updatedAt: new Date(),
+      })
+      .where(eq(schema.account.userId, userId));
   }
 }
 

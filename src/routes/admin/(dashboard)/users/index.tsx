@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { UsersIcon, MagnifyingGlassIcon, CheckCircleIcon, XCircleIcon, ShieldIcon, ProhibitIcon, UserIcon } from "@phosphor-icons/react";
+import { UsersIcon, MagnifyingGlassIcon, CheckCircleIcon, XCircleIcon, ShieldIcon, ProhibitIcon, UserIcon, KeyIcon } from "@phosphor-icons/react";
+import { toast } from "sonner";
 
 import type { RouterOutput } from "@/integrations/orpc/client";
 
@@ -9,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
 import { orpc } from "@/integrations/orpc/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -46,7 +48,21 @@ function formatDate(input: Date | string | null | undefined) {
 function AdminUsers() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedUser, setSelectedUser] = useState<AdminUser | null>(null);
+  const [newPassword, setNewPassword] = useState("");
+  const [showResetForm, setShowResetForm] = useState(false);
   const { data, isLoading, error } = useQuery(orpc.admin.users.list.queryOptions());
+
+  const resetPasswordMutation = useMutation({
+    ...orpc.admin.users.resetPassword.mutationOptions(),
+    onSuccess: () => {
+      toast.success("密码重置成功");
+      setNewPassword("");
+      setShowResetForm(false);
+    },
+    onError: (error) => {
+      toast.error(`密码重置失败: ${error.message}`);
+    },
+  });
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
   const filteredUsers =
@@ -184,7 +200,13 @@ function AdminUsers() {
         </Card>
       </div>
 
-      <Dialog open={!!selectedUser} onOpenChange={(open) => !open && setSelectedUser(null)}>
+      <Dialog open={!!selectedUser} onOpenChange={(open) => {
+        if (!open) {
+          setSelectedUser(null);
+          setShowResetForm(false);
+          setNewPassword("");
+        }
+      }}>
         <DialogContent className="sm:max-w-lg" showClose>
           <DialogHeader>
             <DialogTitle>用户详情</DialogTitle>
@@ -192,46 +214,99 @@ function AdminUsers() {
           </DialogHeader>
 
           {selectedUser && (
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">用户 ID</p>
-                <p className="break-all text-sm">{selectedUser.id}</p>
+            <div className="space-y-6">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">用户 ID</p>
+                  <p className="break-all text-sm">{selectedUser.id}</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">昵称</p>
+                  <p className="text-sm font-medium">{selectedUser.name}</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">用户名</p>
+                  <p className="text-sm">@{selectedUser.username}</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">邮箱</p>
+                  <p className="break-all text-sm">{selectedUser.email}</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">邮箱验证</p>
+                  <Badge variant={selectedUser.emailVerified ? "default" : "secondary"}>
+                    {selectedUser.emailVerified ? "已验证" : "未验证"}
+                  </Badge>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">账号状态</p>
+                  <Badge variant={selectedUser.banned ? "destructive" : "default"}>
+                    {selectedUser.banned ? "已封禁" : "正常"}
+                  </Badge>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">角色</p>
+                  <Badge variant="outline">{selectedUser.role === "admin" ? "管理员" : "普通用户"}</Badge>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-muted-foreground">注册时间</p>
+                  <p className="text-sm">{formatDate(selectedUser.createdAt)}</p>
+                </div>
+                <div className="space-y-1 sm:col-span-2">
+                  <p className="text-xs text-muted-foreground">最后活跃时间</p>
+                  <p className="text-sm">{formatDate(selectedUser.lastActiveAt)}</p>
+                </div>
               </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">昵称</p>
-                <p className="text-sm font-medium">{selectedUser.name}</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">用户名</p>
-                <p className="text-sm">@{selectedUser.username}</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">邮箱</p>
-                <p className="break-all text-sm">{selectedUser.email}</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">邮箱验证</p>
-                <Badge variant={selectedUser.emailVerified ? "default" : "secondary"}>
-                  {selectedUser.emailVerified ? "已验证" : "未验证"}
-                </Badge>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">账号状态</p>
-                <Badge variant={selectedUser.banned ? "destructive" : "default"}>
-                  {selectedUser.banned ? "已封禁" : "正常"}
-                </Badge>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">角色</p>
-                <Badge variant="outline">{selectedUser.role === "admin" ? "管理员" : "普通用户"}</Badge>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">注册时间</p>
-                <p className="text-sm">{formatDate(selectedUser.createdAt)}</p>
-              </div>
-              <div className="space-y-1 sm:col-span-2">
-                <p className="text-xs text-muted-foreground">最后活跃时间</p>
-                <p className="text-sm">{formatDate(selectedUser.lastActiveAt)}</p>
+
+              {/* 密码重置区域 */}
+              <div className="border-t pt-4">
+                {!showResetForm ? (
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => setShowResetForm(true)}
+                  >
+                    <KeyIcon className="mr-2 h-4 w-4" />
+                    重置密码
+                  </Button>
+                ) : (
+                  <div className="space-y-3">
+                    <Label htmlFor="new-password">新密码</Label>
+                    <Input
+                      id="new-password"
+                      type="password"
+                      placeholder="请输入新密码（至少6位）"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                    <div className="flex gap-2">
+                      <Button
+                        variant="default"
+                        className="flex-1"
+                        disabled={newPassword.length < 6 || resetPasswordMutation.isPending}
+                        onClick={() => {
+                          if (selectedUser) {
+                            resetPasswordMutation.mutate({
+                              userId: selectedUser.id,
+                              newPassword,
+                            });
+                          }
+                        }}
+                      >
+                        {resetPasswordMutation.isPending ? "重置中..." : "确认重置"}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        onClick={() => {
+                          setShowResetForm(false);
+                          setNewPassword("");
+                        }}
+                      >
+                        取消
+                      </Button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
