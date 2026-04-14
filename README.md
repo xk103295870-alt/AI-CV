@@ -1,70 +1,65 @@
 <div align="center">
   <a href="https://rxresu.me">
-    <img src="public/opengraph/banner.jpg" alt="Reactive Resume" />
+    <img src="public/opengraph/banner.jpg" alt="W简历" />
   </a>
 
-  <h1>Reactive Resume</h1>
+  <h1>W简历</h1>
 
-  <p>Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.</p>
+  <p>W简历（W简历）是一款免费开源的简历构建工具，让您轻松创建、更新和分享专业简历。</p>
 
   <p>
-    <a href="https://rxresu.me"><strong>Get Started</strong></a>
+    <a href="https://rxresu.me"><strong>立即开始</strong></a>
     ·
-    <a href="https://docs.rxresu.me"><strong>Learn More</strong></a>
+    <a href="https://docs.rxresu.me"><strong>了解更多</strong></a>
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/package-json/v/amruthpillai/reactive-resume?style=flat-square" alt="Reactive Resume version">
+    <img src="https://img.shields.io/github/package-json/v/amruthpillai/reactive-resume?style=flat-square" alt="版本">
     <img src="https://img.shields.io/github/stars/amruthpillai/Reactive-Resume?style=flat-square" alt="GitHub Stars">
-    <img src="https://img.shields.io/github/license/amruthpillai/Reactive-Resume?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/github/license/amruthpillai/Reactive-Resume?style=flat-square" alt="许可证" />
     <img src="https://img.shields.io/docker/pulls/amruthpillai/reactive-resume?style=flat-square" alt="Docker Pulls" />
-    <a href="https://discord.gg/aSyA5ZSxpb"><img src="https://img.shields.io/discord/1173518977851473940?style=flat-square&label=discord" alt="Discord" /></a>
-    <a href="https://crowdin.com/project/reactive-resume"><img src="https://badges.crowdin.net/reactive-resume/localized.svg?style=flat-square" alt="Crowdin" /></a>
-    <a href="https://github.com/sponsors/AmruthPillai"><img src="https://img.shields.io/github/sponsors/AmruthPillai?style=flat-square&label=sponsors" alt="Sponsors" /></a>
-    <a href="https://opencollective.com/reactive-resume"><img src="https://img.shields.io/opencollective/backers/reactive-resume?style=flat-square&label=donations" alt="Donations" /></a>
   </p>
 </div>
 
 ---
 
-Reactive Resume makes building resumes straightforward. Pick a template, fill in your details, and export to PDF—no account required for basic use. For those who want more control, the entire application can be self-hosted on your own infrastructure.
+W简历让简历制作变得简单高效。选择模板、填写信息、导出 PDF——基础使用无需注册。如需更多控制，您可以在自己的服务器上自托管整个应用。
 
-Built with privacy as a core principle, Reactive Resume gives you complete ownership of your data. The codebase is fully open-source under the MIT license, with no tracking, no ads, and no hidden costs.
+以隐私为核心设计原则，W简历让您完全掌控自己的数据。代码库完全开源，采用 MIT 许可证，无追踪、无广告、无隐藏费用。
 
-## Features
+## 功能特点
 
-**Resume Building**
+**简历制作**
 
-- Real-time preview as you type
-- Multiple export formats (PDF, JSON)
-- Drag-and-drop section ordering
-- Custom sections for any content type
-- Rich text editor with formatting support
+- 实时预览，边写边看效果
+- 多种导出格式（PDF、JSON）
+- 拖拽调整模块顺序
+- 自定义模块，支持任意内容类型
+- 富文本编辑器，支持格式设置
 
-**Templates**
+**模板**
 
-- Professionally designed templates
-- A4 and Letter size support
-- Customizable colors, fonts, and spacing
-- Custom CSS for advanced styling
+- 专业设计的简历模板
+- 支持 A4 和 Letter 纸张尺寸
+- 可自定义颜色、字体和间距
+- 支持自定义 CSS 高级样式
 
-**Privacy & Control**
+**隐私与控制**
 
-- Self-host on your own infrastructure
-- No tracking or analytics by default
-- Full data export at any time
-- Delete your data permanently with one click
+- 可在自己的服务器上自托管
+- 默认无追踪或分析
+- 随时导出完整数据
+- 一键永久删除数据
 
-**Extras**
+**其他功能**
 
-- AI integration (OpenAI, Google Gemini, Anthropic Claude)
-- Multi-language support
-- Share resumes via unique links
-- Import from JSON Resume format
-- Dark mode support
-- Passkey and two-factor authentication
+- 多语言支持（简体中文、繁体中文、英文、越南语）
+- 通过唯一链接分享简历
+- 支持 JSON Resume 格式导入
+- 暗黑模式支持
+- 管理员后台管理
 
-## Templates
+## 模板预览
 
 <table>
   <tr>
@@ -129,114 +124,98 @@ Built with privacy as a core principle, Reactive Resume gives you complete owner
   </tr>
 </table>
 
-## Quick Start
+## 快速开始
 
-The quickest way to run Reactive Resume locally:
+### 本地开发
 
 ```bash
-# Clone the repository
-git clone https://github.com/amruthpillai/reactive-resume.git
-cd reactive-resume
+# 克隆仓库
+git clone https://github.com/xk103295870-alt/AI-CV.git
+cd AI-CV
 
-# Start all services
-docker compose up -d
+# 安装依赖
+pnpm install
 
-# Access the app
+# 启动开发服务器
+pnpm dev
+
+# 访问应用
 open http://localhost:3000
 ```
 
-[![Build with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/amruthpillai/reactive-resume)
+### Docker 部署（生产环境）
 
-For detailed setup instructions, environment configuration, and self-hosting guides, see the [documentation](https://docs.rxresu.me).
-
-## Tech Stack
-
-| Category         | Technology                      |
-| ---------------- | ------------------------------- |
-| Framework        | TanStack Start (React 19, Vite) |
-| Runtime          | Node.js                         |
-| Language         | TypeScript                      |
-| Database         | PostgreSQL with Drizzle ORM     |
-| API              | ORPC (Type-safe RPC)            |
-| Auth             | Better Auth                     |
-| Styling          | Tailwind CSS                    |
-| UI Components    | Radix UI                        |
-| State Management | Zustand + TanStack Query        |
-
-## Documentation
-
-Comprehensive guides are available at [docs.rxresu.me](https://docs.rxresu.me):
-
-| Guide                                                                        | Description                      |
-| ---------------------------------------------------------------------------- | -------------------------------- |
-| [Getting Started](https://docs.rxresu.me/getting-started)                    | First-time setup and basic usage |
-| [Self-Hosting](https://docs.rxresu.me/self-hosting/docker)                   | Deploy on your own server        |
-| [Development Setup](https://docs.rxresu.me/contributing/development)         | Local development environment    |
-| [Project Architecture](https://docs.rxresu.me/contributing/architecture)     | Codebase structure and patterns  |
-| [Exporting Your Resume](https://docs.rxresu.me/guides/exporting-your-resume) | PDF and JSON export options      |
-
-## Self-Hosting
-
-Reactive Resume can be self-hosted using Docker. The stack includes:
-
-- **PostgreSQL** — Database for storing user data and resumes
-- **Printer** — Headless Chromium service for PDF and screenshot generation
-- **SeaweedFS** (optional) — S3-compatible storage for file uploads
-
-Pull the latest image from Docker Hub or GitHub Container Registry:
+**⚠️ 重要提示：部署前必须创建 .env 文件**
 
 ```bash
-# Docker Hub
-docker pull amruthpillai/reactive-resume:latest
+# 克隆仓库
+git clone https://github.com/xk103295870-alt/AI-CV.git
+cd AI-CV
 
-# GitHub Container Registry
-docker pull ghcr.io/amruthpillai/reactive-resume:latest
+# 创建 .env 配置文件（必须步骤）
+cat > .env << 'EOF'
+# 应用配置
+APP_URL=http://localhost:3000
+APP_SECRET=your-super-secret-key-change-in-production
+
+# 数据库配置
+POSTGRES_URL=postgres://postgres:postgres@postgres:5432/postgres
+
+# 存储配置（本地存储）
+STORAGE_TYPE=local
+STORAGE_LOCAL_DIR=/app/data/uploads
+
+# PDF 打印服务
+PRINTER_TOKEN=1234567890
+PRINTER_ENDPOINT=ws://browserless:3000?token=1234567890
+
+# 功能开关
+FLAG_DISABLE_SIGNUPS=false
+FLAG_DISABLE_EMAIL_AUTH=false
+EOF
+
+# 启动所有服务
+docker compose up -d
+
+# 访问应用
+open http://localhost:3000
 ```
 
-See the [self-hosting guide](https://docs.rxresu.me/self-hosting/docker) for complete instructions.
+**常见问题：**
+- 如果提示 `.env file not found`，说明没有创建 .env 文件
+- 修改 `.env` 中的 `APP_URL` 为您的实际域名或 IP
+- 生产环境务必修改 `APP_SECRET` 为强密码
 
-## Support
+## 技术栈
 
-Reactive Resume is and always will be free and open-source. If it has helped you land a job or saved you time, please consider supporting continued development:
+| 类别         | 技术                           |
+| ------------ | ------------------------------ |
+| 框架         | TanStack Start (React 19, Vite) |
+| 运行时       | Node.js                        |
+| 语言         | TypeScript                     |
+| 数据库       | PostgreSQL + Drizzle ORM       |
+| API          | oRPC (类型安全 RPC)            |
+| 认证         | Better Auth                    |
+| 样式         | Tailwind CSS                   |
+| UI 组件      | Radix UI                       |
+| 状态管理     | Zustand + TanStack Query       |
 
-<p>
-  <a href="https://github.com/sponsors/AmruthPillai">
-    <img src="https://img.shields.io/badge/GitHub%20Sponsors-Support-ea4aaa?style=flat-square&logo=github-sponsors" alt="GitHub Sponsors" />
-  </a>
-  <a href="https://opencollective.com/reactive-resume">
-    <img src="https://img.shields.io/badge/Open%20Collective-Contribute-7FADF2?style=flat-square&logo=open-collective" alt="Open Collective" />
-  </a>
-</p>
+## 自托管部署
 
-Other ways to support:
+W简历支持使用 Docker 自托管。技术栈包括：
 
-- Star this repository
-- Report bugs and suggest features
-- Improve documentation
-- Help with translations
+- **PostgreSQL** — 存储用户数据和简历
+- **Browserless** — 无头 Chromium 服务，用于 PDF 生成
+- **SeaweedFS** — S3 兼容的文件存储（可选）
 
-## Star History
+详细的部署指南请参考上方 "Docker 部署" 部分。
 
-<a href="https://www.star-history.com/#amruthpillai/reactive-resume&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=amruthpillai/reactive-resume&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=amruthpillai/reactive-resume&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=amruthpillai/reactive-resume&type=date&legend=top-left" />
- </picture>
-</a>
+## 管理员后台
 
-## Contributing
+部署后可通过 `/admin/login` 访问管理员后台：
+- 需要在数据库中将用户 `role` 字段设置为 `'admin'`
+- 管理员可以查看统计信息、管理用户、重置用户密码
 
-Contributions make open-source thrive. Whether fixing a typo or adding a feature, all contributions are welcome.
+## 许可证
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-See the [development setup guide](https://docs.rxresu.me/contributing/development) for detailed instructions on how to set up the project locally.
-
-## License
-
-[MIT](./LICENSE) — do whatever you want with it.
+[MIT](./LICENSE) — 随意使用。 
