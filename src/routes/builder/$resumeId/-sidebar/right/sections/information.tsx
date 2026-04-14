@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { HandHeartIcon } from "@phosphor-icons/react";
+import { WechatLogoIcon } from "@phosphor-icons/react";
 
 import { Button } from "@/components/ui/button";
 
@@ -10,18 +10,17 @@ export function InformationSectionBuilder() {
     <SectionBase type="information" className="space-y-4">
       <div className="space-y-2 rounded-md border bg-sky-600 p-5 text-white dark:bg-sky-700">
         <h4 className="font-medium tracking-tight">
-          <Trans>Support the app by doing what you can!</Trans>
+          <Trans>Thank you for using and supporting this app!</Trans>
         </h4>
 
         <div className="space-y-2 text-xs leading-normal">
           <Trans>
             <p>
-              Thank you for using Reactive Resume! This app is a labor of love, created mostly in my spare time, with
-              wonderful support from open-source contributors around the world.
+              The current version is a trial version, the first work of Studio Tanmo AI.
+              We also thank the open source community and peers for their support.
             </p>
             <p>
-              If Reactive Resume has been helpful to you, and you'd like to help keep it free and open for everyone,
-              please consider making a donation. Every little bit is appreciated!
+              If you encounter any problems during use, you can contact the developer at any time to solve them.
             </p>
           </Trans>
         </div>
@@ -30,12 +29,12 @@ export function InformationSectionBuilder() {
           size="sm"
           variant="default"
           nativeButton={false}
-          className="mt-2 px-4! text-xs whitespace-normal"
+          className="mt-2 px-4! text-xs whitespace-normal bg-white text-sky-600 hover:bg-white/90"
           render={
-            <a href="http://opencollective.com/reactive-resume" target="_blank" rel="noopener">
-              <HandHeartIcon />
+            <a href="https://work.weixin.qq.com/ca/cawcde3ad5b17ce10c" target="_blank" rel="noopener noreferrer">
+              <WechatLogoIcon />
               <span className="truncate">
-                <Trans>Donate to Reactive Resume</Trans>
+                <Trans>Contact Developer</Trans>
               </span>
             </a>
           }

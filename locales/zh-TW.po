@@ -3359,3 +3359,23 @@ msgstr "管理員"
 #: src/routes/dashboard/admin/users/index.tsx
 msgid "Failed to load users. Please try again."
 msgstr "加載用戶失敗，請重試。"
+
+#: src/routes/auth/forgot-password.tsx
+msgid "This is a trial version. To change your password, please contact the developer."
+msgstr "本版本為試運行版本，如需修改密碼，請聯繫開發者"
+
+#: src/routes/auth/forgot-password.tsx
+msgid "Add Customer Service on WeChat Work"
+msgstr "添加企業微信客服"
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "Thank you for using and supporting this app!"
+msgstr "感謝您使用和支持本應用！"
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "<0>The current version is a trial version, the first work of Studio Tanmo AI. We also thank the open source community and peers for their support.</0><1>If you encounter any problems during use, you can contact the developer at any time to solve them.</1>"
+msgstr "<0>目前版本為試運行版本，是工作室探摸AI的第一個作品，也感謝開源社區和同行的支持。</0><1>如果使用遇到了問題，可隨時通過聯繫開發者解決問題。</1>"
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "Contact Developer"
+msgstr "聯繫開發者"

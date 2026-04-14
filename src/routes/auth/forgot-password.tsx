@@ -1,7 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { ArrowRightIcon, WechatLogoIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, GlobeIcon, WechatLogoIcon } from "@phosphor-icons/react";
+import { LocaleCombobox } from "@/components/locale/combobox";
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -58,6 +59,14 @@ function RouteComponent() {
 
   return (
     <>
+      {/* Language Switcher - Top Right */}
+      <div className="absolute top-4 right-4 z-50">
+        <div className="flex items-center gap-2 rounded-lg bg-background/80 backdrop-blur-sm p-2 shadow-sm">
+          <GlobeIcon className="h-4 w-4 text-muted-foreground" />
+          <LocaleCombobox />
+        </div>
+      </div>
+
       <div className="space-y-1 text-center">
         <h1 className="text-2xl font-bold tracking-tight">
           <Trans>Forgot your password?</Trans>
@@ -111,7 +120,7 @@ function RouteComponent() {
         </div>
         <div className="relative flex justify-center text-xs">
           <span className="bg-background px-2 text-muted-foreground">
-            本版本为试运行版本，如需修改密码，联系开发者
+            <Trans>This is a trial version. To change your password, please contact the developer.</Trans>
           </span>
         </div>
       </div>
@@ -124,7 +133,7 @@ function RouteComponent() {
           render={
             <a href="https://work.weixin.qq.com/ca/cawcde3ad5b17ce10c" target="_blank" rel="noopener noreferrer">
               <WechatLogoIcon className="size-5" />
-              添加企业微信客服
+              <Trans>Add Customer Service on WeChat Work</Trans>
             </a>
           }
         />

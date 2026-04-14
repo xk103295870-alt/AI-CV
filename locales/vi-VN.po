@@ -3355,3 +3355,23 @@ msgstr "Đã cấm"
 #: src/routes/dashboard/admin/users/index.tsx
 msgid "Failed to load users. Please try again."
 msgstr "Không thể tải ngườ i dùng. Vui lòng thử lại."
+
+#: src/routes/auth/forgot-password.tsx
+msgid "This is a trial version. To change your password, please contact the developer."
+msgstr "Đây là phiên bản thử nghiệm. Để thay đổi mật khẩu, vui lòng liên hệ nhà phát triển."
+
+#: src/routes/auth/forgot-password.tsx
+msgid "Add Customer Service on WeChat Work"
+msgstr "Thêm Dịch vụ Khách hàng trên WeChat Work"
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "Thank you for using and supporting this app!"
+msgstr "Cảm ơn bạn đã sử dụng và hỗ trợ ứng dụng này!"
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "<0>The current version is a trial version, the first work of Studio Tanmo AI. We also thank the open source community and peers for their support.</0><1>If you encounter any problems during use, you can contact the developer at any time to solve them.</1>"
+msgstr "<0>Phiên bản hiện tại là phiên bản thử nghiệm, tác phẩm đầu tiên của Studio Tanmo AI. Chúng tôi cũng xin cảm ơn cộng đồng mã nguồn mở và các đồng nghiệp vì sự hỗ trợ của họ.</0><1>Nếu bạn gặp bất kỳ vấn đề nào trong quá trình sử dụng, bạn có thể liên hệ với nhà phát triển bất cứ lúc nào để giải quyết.</1>"
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "Contact Developer"
+msgstr "Liên hệ Nhà phát triển"
