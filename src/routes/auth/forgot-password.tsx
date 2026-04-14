@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { ArrowRightIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, WechatLogoIcon } from "@phosphor-icons/react";
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -11,6 +11,7 @@ import z from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { authClient } from "@/integrations/auth/client";
 
 export const Route = createFileRoute("/auth/forgot-password")({
@@ -102,6 +103,35 @@ function RouteComponent() {
           </Button>
         </form>
       </Form>
+
+      {/* 联系开发者板块 */}
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <Separator className="w-full" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            <Trans>通过以下方式可以联系到开发者</Trans>
+          </span>
+        </div>
+      </div>
+
+      <div className="text-center">
+        <Button
+          variant="outline"
+          className="w-full gap-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+          nativeButton={false}
+          render={
+            <a href="weixin://" target="_blank" rel="noopener noreferrer">
+              <WechatLogoIcon className="size-5" />
+              <Trans>添加企业微信客服</Trans>
+            </a>
+          }
+        />
+        <p className="mt-2 text-xs text-muted-foreground">
+          <Trans>点击上方图标即可通过企业微信添加开发者</Trans>
+        </p>
+      </div>
     </>
   );
 }
